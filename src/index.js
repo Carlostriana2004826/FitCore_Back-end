@@ -9,7 +9,7 @@ const PORT = process.env.PORT
 app.use( express.json());
 app.use( cors());
 
-// app.use('/api', require('./routes/auth.routes'));
+app.use('/api', require('./routes/auth.routes'));
 
 
 dbConnection();

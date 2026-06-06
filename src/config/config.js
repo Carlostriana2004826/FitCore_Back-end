@@ -1,6 +1,4 @@
-const { connection } = require("mongoose");
-const  {Client}   = require("pg");
-
+const  {Client} = require("pg");
 
 const dbConnection = async () => {
     try{
