@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+model rol {
+  id         Int        @id @default(autoincrement())
+  nombre_rol String     @unique @db.VarChar(30)
+  usuarios   usuarios[]
+}
+
+model usuarios {
+  id            String @id @db.VarChar(10)
+  cedula        String @unique @db.VarChar(30)
+  nombre        String @db.VarChar(100)
+  email         String @unique @db.VarChar(150)
+  password_hash String @db.VarChar(255)
+  telefono      String @db.VarChar(25)
+  rol_id        Int
+  rol           rol    @relation(fields: [rol_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
